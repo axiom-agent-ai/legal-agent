@@ -22,6 +22,24 @@ body{background:#0a0a0f;color:#c9d1d9;font-family:'Segoe UI',system-ui,sans-seri
 .capabilities ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
 .capabilities li{color:#8b949e;padding-left:20px;position:relative}
 .capabilities li::before{content:"✓";position:absolute;left:0;color:#238636}
+.demo-section{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:30px;margin-bottom:40px}
+.demo-section h3{color:#f0883e;margin-bottom:6px;font-size:1.2em}
+.demo-section .subtitle{color:#8b949e;font-size:0.9em;margin-bottom:24px}
+.demo-input{background:#0d1117;border:1px solid #30363d;border-radius:6px;padding:16px;margin-bottom:24px;font-size:0.9em}
+.demo-input strong{color:#f0883e}
+.demo-input em{color:#8b949e;font-style:normal}
+.nda-analysis{background:#0d1117;border:1px solid #30363d;border-radius:6px;padding:20px;font-size:0.9em;line-height:1.7}
+.nda-analysis .clause{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #21262d}
+.nda-analysis .clause:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.nda-analysis .clause-title{color:#c9d1d9;font-weight:600;margin-bottom:6px}
+.nda-analysis .clause-text{color:#8b949e;font-size:0.88em;margin-bottom:8px;font-style:italic}
+.nda-analysis .flag{color:#f85149;font-weight:600}
+.nda-analysis .warn{color:#f0883e;font-weight:600}
+.nda-analysis .ok{color:#238636;font-weight:600}
+.nda-analysis .explanation{color:#8b949e;font-size:0.88em}
+.verdict{background:#1a2332;border:1px solid #30363d;border-radius:6px;padding:14px;margin-top:20px;font-size:0.88em}
+.verdict strong{color:#f85149}
+.verdict p{color:#8b949e;margin-top:6px}
 .cta-section{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:40px;text-align:center;margin:40px auto;max-width:600px}
 .cta-section h2{color:#f0883e;margin-bottom:16px}
 .cta-section p{color:#8b949e;margin-bottom:24px}
@@ -57,10 +75,6 @@ footer{text-align:center;padding:30px;color:#484f58;font-size:0.85em}
 <p>Break down complex contracts clause by clause. Understand what you're actually signing.</p>
 </div>
 <div class="card">
-<h3>📝 Sample Prompts</h3>
-<p>3 ready-to-use prompts for common scenarios: review, risk ID, negotiation prep.</p>
-</div>
-<div class="card">
 <h3>🛡️ Your Agent, Your Rules</h3>
 <p>You own the SOUL.md and AGENTS.md. Run it on your infrastructure. No subscriptions. No data leaving your control.</p>
 </div>
@@ -76,10 +90,61 @@ footer{text-align:center;padding:30px;color:#484f58;font-size:0.85em}
 <li>Self-corrects without asking. Speaks in short sentences.</li>
 </ul>
 </div>
+
+<div class="demo-section">
+<h3>See It In Action</h3>
+<p class="subtitle">A startup NDA landed on your desk. Here's what Senior Counsel flags before you sign.</p>
+
+<div class="demo-input">
+<strong>Input:</strong> <em>"Series A investor NDA. Standard 2-year term. Check for problematic clauses."</em>
+</div>
+
+<div class="nda-analysis">
+<div class="clause">
+<div class="clause-title">🔴 Non-Compete — Section 4.2</div>
+<div class="clause-text">"Recipient shall not engage in any business competitive with the Disclosing Party for a period of 3 years following termination."</div>
+<div class="flag">🔴 HIGH RISK: 3-year non-compete is unreasonable for a standard NDA.</div>
+<div class="explanation">Standard investor NDA = 1 year maximum. 3 years is venture-backed territory with proper compensation. Without consideration, this is unenforceable — but that doesn't stop them from suing you to intimidate.</div>
+</div>
+
+<div class="clause">
+<div class="clause-title">🟡 Assignment of IP — Section 6.1</div>
+<div class="clause-text">"All ideas, concepts, and information shared by the Disclosing Party shall become the sole property of the Disclosing Party."</div>
+<div class="warn">🟡 REVIEW: Overly broad. Could capture your general industry knowledge.</div>
+<div class="explanation">Push for carve-out: "general industry knowledge and publicly available information are excluded." Without this, any industry insight you share during diligence could be claimed as theirs.</div>
+</div>
+
+<div class="clause">
+<div class="clause-title">🟢 Confidential Information Definition — Section 1.3</div>
+<div class="clause-text">"Excludes information that: (a) is publicly available; (b) was known prior to disclosure; (c) is independently developed."</div>
+<div class="ok">🟢 STANDARD: Standard exclusions. No surprises here.</div>
+</div>
+
+<div class="clause">
+<div class="clause-title">🔴 Termination — Section 8.1</div>
+<div class="clause-text">"This Agreement may be terminated by either party with 30 days written notice."</div>
+<div class="flag">🔴 HIGH RISK: One-sided termination clause.</div>
+<div class="explanation">Standard NDAs are bilateral. If they terminate, their confidentiality obligations end but your obligations continue. Add: "Either party's right to terminate is subject to the survival of confidentiality obligations for a period of 3 years following termination."</div>
+</div>
+
+<div class="clause">
+<div class="clause-title">🟡 Non-Solicitation — Section 9.4</div>
+<div class="clause-text">"Recipient shall not solicit employees of the Disclosing Party for a period of 2 years."</div>
+<div class="warn">🟡 REVIEW: Standard but broad. Narrow to key personnel only.</div>
+<div class="explanation">"Employees" includes all staff, not just executives. Push for "senior management and direct reports" only. Also check if it applies to contractors.</div>
+</div>
+</div>
+
+<div class="verdict">
+<strong>Verdict: 3 red flags, 2 yellow flags.</strong>
+<p>Recommended action: Return with red-line markup. The non-compete and termination clause are deal-breakers without modification. The IP clause is negotiable. Do not sign as-is.</p>
+</div>
+</div>
+
 </div>
 <div class="cta-section">
 <h2>Not a Template. An Architecture.</h2>
-<p>SOUL.md + AGENTS.md + Setup Guide + 3 Sample Prompts. Build your own contract review agent that you own and control.</p>
+<p>SOUL.md + AGENTS.md + Setup Guide. Build your own contract review agent that you own and control.</p>
 <a href="https://giaktis.gumroad.com/l/Legal-essential" class="btn">Get Legal on Gumroad →</a>
 </div>
 <footer>
